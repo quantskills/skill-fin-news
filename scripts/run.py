@@ -23,7 +23,7 @@ from bs4 import BeautifulSoup
 
 PANDADATA_USERNAME = os.environ.get("DEFAULT_USERNAME")
 PANDADATA_PASSWORD = os.environ.get("DEFAULT_PASSWORD")
-PANDADATA_URL = "http://pandadata.pandaaiquant.com"
+PANDADATA_URL = os.environ.get("JAVA_SERVICE_BASE_URL", "http://pandadata.pandaaiquant.com")
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
 NEWS_COUNT = 15
 MAX_RETRIES = 2  # Pandadata API 重试次数
@@ -86,6 +86,12 @@ _PD = None
 def pd_api():
     global _PD
     if _PD is None:
+        if not PANDADATA_USERNAME or not PANDADATA_PASSWORD:
+            print("\n  [ERROR] 请设置 Pandadata 凭证：")
+            print("    export DEFAULT_USERNAME='your_username'")
+            print("    export DEFAULT_PASSWORD='your_password'")
+            print("    export JAVA_SERVICE_BASE_URL='http://pandadata.pandaaiquant.com'")
+            raise SystemExit(1)
         import panda_data as _m
         _m.init_token(username=PANDADATA_USERNAME, password=PANDADATA_PASSWORD, base_url=PANDADATA_URL)
         _PD = _m
