@@ -1,0 +1,85 @@
+---
+name: skill-fin-news
+description: 实时财经头条生成器。采集东方财富财经要闻 + Pandadata 市场数据，由 AI 精选 5 条并撰写深度文章（含事实描述、数据解读、大V点评）。
+license: MIT
+metadata:
+  project_type: skill
+  category: finance-news
+  tags:
+  - finance
+  - news
+  - china-market
+  - a-share
+  platforms:
+  - claude-code
+  status: stable
+  summary_zh: 实时财经资讯聚合，AI 精选 5 条头条并撰写深度分析文章。
+---
+
+# 实时财经头条
+
+采集实时财经新闻和市场数据，AI 精选头条并撰写深度分析。
+
+## 工作流程
+
+### Step 1: 数据采集
+
+```bash
+cd scripts && python run.py
+```
+
+自动获取：
+- A股指数行情（上证/深证/创业板/科创50/沪深300）
+- 融资融券余额
+- 宏观数据（M2、M1、USD/CNY、外汇占款）
+- 东方财富要闻 + 华尔街见闻快讯（API），多源混合去重后 15 条
+
+输出到 `output/实时财经头条_YYYYMMDD_HHMM.md`（时间戳防覆盖）
+
+### Step 2: AI 精选 + 深度撰稿
+
+1. 查看 15 条标题，**去重、筛选出 5 条最具代表性的头条**
+2. 对每条使用 `WebSearch` 搜索深度背景信息
+3. 撰写每条文章的**三段式分析**：
+
+```
+📋 事实描述
+（保留原文措辞，不修改创作）
+
+📊 数据解读/分析
+（结合文章数据 + 市场关联数据进行解读）
+
+💬 大V点评
+（风格化点评，约200字，挖掘机会+提示风险）
+```
+
+4. **将撰写完成的文章保存到 `output/实时财经头条_YYYYMMDD_HHMM.md`**
+
+## 调用方式
+
+**CMD+I → skill-fin-news**，或 `@skill-fin-news 生成财经头条`
+
+## 项目结构
+
+```
+├── SKILL.md
+├── README.md
+├── requirements.txt
+├── scripts/
+│   └── run.py              ← 数据采集脚本
+├── references/
+│   └── sources.md
+└── output/                 ← 生成报告
+```
+
+## 数据来源
+
+| 数据 | 来源 | 频率 |
+|------|------|:----:|
+| A股指数行情 | Pandadata API | 日 |
+| 融资融券余额 | Pandadata API | 日 |
+| M2/M1/外汇占款 | Pandadata API | 月 |
+| USD/CNY 中间价 | Pandadata API | 日 |
+| 财经要闻 | 东方财富（爬虫） | 实时 |
+| 财经快讯 | 华尔街见闻（API） | 实时 |
+| 深度撰稿素材 | WebSearch | 按需 |
