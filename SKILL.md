@@ -20,13 +20,33 @@ metadata:
   - macro
   platforms:
   - claude-code
+  - codex
+  - openclaw
   - cursor
   status: stable
+  validation_level: runnable
+  maintainer_type: custom
   maintainer: xixihaha-dzh
   contributors:
   - xixihaha-dzh
   summary_zh: 实时财经资讯聚合，AI 精选 5 条头条并撰写深度分析文章。
   summary_en: Real-time China financial news aggregator. Curates top 5 headlines with AI-written deep analysis (fact description, data interpretation, expert commentary).
+quantSkills:
+  project_type: skill
+  category: finance-news
+  tags:
+  - finance-news
+  - realtime
+  - china-market
+  - a-share
+  platforms:
+  - claude-code
+  - cursor
+  status: stable
+  validation_level: runnable
+  maintainer_type: custom
+  summary_zh: 实时财经资讯聚合，AI 精选 5 条头条并撰写深度分析文章。
+  license: GPL-3.0
 ---
 
 # 实时财经头条
