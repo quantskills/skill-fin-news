@@ -29,6 +29,7 @@ Step 3: 保存                    ← 输出到 output/
 ├── requirements.txt        ← Python 依赖
 ├── scripts/
 │   └── run.py              ← 数据采集脚本
+├── agents/                 ← 平台配置
 ├── references/
 │   └── sources.md          ← 数据源说明
 └── output/                 ← 生成报告
@@ -77,11 +78,20 @@ CMD+I → skill-fin-news
 | 财经快讯 | 华尔街见闻（API） | 实时 |
 | 深度撰稿素材 | WebSearch | 按需 |
 
+## 凭证配置
+
+Pandadata 凭证通过环境变量设置（不设则运行报错）：
+
+```bash
+export DEFAULT_USERNAME="your_username"
+export DEFAULT_PASSWORD="your_password"
+export JAVA_SERVICE_BASE_URL="http://pandadata.pandaaiquant.com"
+```
+
 ## 配置说明
 
 编辑 `scripts/run.py` 中的配置区：
 
-- `PANDADATA_USERNAME` / `PANDADATA_PASSWORD`：Pandadata 账号
 - `NEWS_COUNT`：新闻输出数量（默认 15）
 - `SKIP_KEYWORDS`：过滤的非新闻关键词
 - `WATCH_KEYWORDS`：关注池关键词（命中自动标记 ★）

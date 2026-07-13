@@ -1,19 +1,32 @@
 ---
 name: skill-fin-news
 description: 实时财经头条生成器。采集东方财富财经要闻 + Pandadata 市场数据，由 AI 精选 5 条并撰写深度文章（含事实描述、数据解读、大V点评）。
-license: MIT
+license: GPL-3.0-only
 metadata:
+  organization: quantskills
+  organization_url: https://github.com/quantskills
+  repository: skill-fin-news
+  repository_url: https://github.com/quantskills/skill-fin-news
   project_type: skill
+  collection: quantskills
   category: finance-news
   tags:
   - finance
   - news
+  - realtime
   - china-market
   - a-share
+  - stock
+  - macro
   platforms:
   - claude-code
+  - cursor
   status: stable
+  maintainer: xixihaha-dzh
+  contributors:
+  - xixihaha-dzh
   summary_zh: 实时财经资讯聚合，AI 精选 5 条头条并撰写深度分析文章。
+  summary_en: Real-time China financial news aggregator. Curates top 5 headlines with AI-written deep analysis (fact description, data interpretation, expert commentary).
 ---
 
 # 实时财经头条
@@ -83,3 +96,17 @@ cd scripts && python run.py
 | 财经要闻 | 东方财富（爬虫） | 实时 |
 | 财经快讯 | 华尔街见闻（API） | 实时 |
 | 深度撰稿素材 | WebSearch | 按需 |
+
+## 凭证配置
+
+Pandadata 凭证通过环境变量设置：
+
+```bash
+export DEFAULT_USERNAME="your_username"
+export DEFAULT_PASSWORD="your_password"
+export JAVA_SERVICE_BASE_URL="http://pandadata.pandaaiquant.com"
+```
+
+## 参考文件
+
+- `references/sources.md`: 数据来源说明
