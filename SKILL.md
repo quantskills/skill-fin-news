@@ -49,6 +49,24 @@ quantSkills:
   license: GPL-3.0
 ---
 
+```json qsh-form
+{
+  "version": 1,
+  "task": {
+    "placeholder": "补充希望重点覆盖的财经事件、市场或文章风格（可选）"
+  },
+  "fields": [
+    {
+      "key": "focus",
+      "label": "重点关注",
+      "type": "text",
+      "placeholder": "例如 A股、宏观政策、人民币汇率"
+    }
+  ],
+  "prompt_template": "{{#task}}任务与材料：\n{{task}}\n\n{{/task}}{{#attachments}}用户上传的材料（已放入工作区）：\n{{attachments}}\n\n{{/attachments}}采集并整理实时财经新闻与市场数据，去重后精选 5 条最具代表性的头条。{{#focus}}重点关注：{{focus}}。{{/focus}}每条按事实描述、数据解读和兼顾机会与风险的评论三部分撰写，核实深度背景并保留来源边界，输出中文报告。"
+}
+```
+
 # 实时财经头条
 
 采集实时财经新闻和市场数据，AI 精选头条并撰写深度分析。
