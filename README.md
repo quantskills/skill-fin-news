@@ -113,3 +113,6 @@ export JAVA_SERVICE_BASE_URL="http://pandadata.pandaaiquant.com"
 ---
 
 *仅供参考，不构成投资建议*
+
+
+Pandadata 兼容维护：[abgyjaguo](https://github.com/abgyjaguo)，保留原项目作者署名。

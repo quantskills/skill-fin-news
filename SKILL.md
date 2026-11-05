@@ -46,7 +46,7 @@ quantSkills:
   validation_level: runnable
   maintainer_type: custom
   summary_zh: 实时财经资讯聚合，AI 精选 5 条头条并撰写深度分析文章。
-  license: GPL-3.0
+  license: GPL-3.0-only
 ---
 
 ```json qsh-form
@@ -148,3 +148,7 @@ export JAVA_SERVICE_BASE_URL="http://pandadata.pandaaiquant.com"
 ## 参考文件
 
 - `references/sources.md`: 数据来源说明
+
+## Pandadata compatibility
+
+[Pandadata 1.0.6 compatibility](references/pandadata-compatibility.md) — exact SDK baseline, validation scope, and shared guidance for all supported agent runtimes.
